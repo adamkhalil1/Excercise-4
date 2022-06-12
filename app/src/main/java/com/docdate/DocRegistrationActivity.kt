@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_doc_registration.*
 
 class DocRegistrationActivity : BasicActivity() {
     val result = StringBuilder()
@@ -45,7 +46,7 @@ class DocRegistrationActivity : BasicActivity() {
     //TODO put this into an interface/abstract class
     private fun validateUserInformation(): Boolean {
 
-
+        val etTitle: EditText = findViewById(R.id.et_title)
         val etFirstName: EditText = findViewById(R.id.et_register_firstname)
         val etLastName: EditText = findViewById(R.id.et_register_lastname)
         val etAddress: EditText = findViewById(R.id.et_register_adress)
@@ -80,6 +81,7 @@ class DocRegistrationActivity : BasicActivity() {
         val lastName = etLastName.text.toString().trim { it <= ' ' }
         val address = etLastName.text.toString().trim { it <= ' ' }
         val phone = etPhone.text.toString().trim { it <= ' ' }
+        val title = etTitle.text.toString().trim { it <= ' ' }
         val website = etWebsite.text.toString().trim { it <= ' ' }
         val specialisation = etSpecialisation.text.toString().trim { it <= ' ' }
         val emailId = etEmailId.text.toString().trim { it <= ' ' }
@@ -102,6 +104,11 @@ class DocRegistrationActivity : BasicActivity() {
                 showCustomSnackBar(resources.getString(R.string.err_msg_enter_last_name), true)
                 false
             }
+            TextUtils.isEmpty(title) -> {
+                showCustomSnackBar(resources.getString(R.string.err_msg_enter_last_name), true)
+                false
+            }
+
             TextUtils.isEmpty(phone) -> {
                 showCustomSnackBar(resources.getString(R.string.err_msg_enter_last_name), true)
                 false
@@ -161,7 +168,8 @@ class DocRegistrationActivity : BasicActivity() {
 
     private fun registerNewUser() {
         if (validateUserInformation()) {
-
+            val title = (findViewById(R.id.et_title) as EditText).text.toString()
+                .trim { it <= ' ' }
             val firstname = (findViewById(R.id.et_register_firstname) as EditText).text.toString()
                 .trim { it <= ' ' }
             val lastname = (findViewById(R.id.et_register_lastname) as EditText).text.toString()
@@ -194,10 +202,14 @@ class DocRegistrationActivity : BasicActivity() {
                             "A new user is created with Firebase-User-ID: ${firebaseUser.uid}",
                             false
                         )
+                        val user = User(firebaseUser.uid, title, firstname,lastname,address,phone,website,specialisation,insurance,email)
+                        CloudFirestore().saveUserInfoOnCloudFirestore(this, user)
+
 
                     } else {
                         showCustomSnackBar(task.exception!!.message.toString(), true)
                     }
+
 
                 }
         }
