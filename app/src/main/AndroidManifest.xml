@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DocDateApp" >
         <activity
-            android:name=".DocRegistration"
+            android:name=".DocRegistrationActivity"
             android:exported="false"
             android:label="@string/title_activity_doc_registration"
             android:theme="@style/Theme.DocDateApp.NoActionBar" />

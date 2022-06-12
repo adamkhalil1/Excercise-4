@@ -28,6 +28,12 @@
     <string name="til_register_address">Address</string>
     <string name="til_register_phone">Phone</string>
     <string name="til_register_website">Website URL</string>
+    <string name="til_register_specialization">Specialisation</string>
+    <string name="tv_register_insurance">Health insurance companies</string>
+    <string name="tv_svs">SVS</string>
+    <string name="tv_ögk">ÖGK</string>
+    <string name="tv_bvaeb">BVAEB</string>
+    <string name="tv_kva">KVA</string>
 
     <!-- Error messages for register UI -->
     <string name="err_msg_enter_first_name">Please enter first name.</string>

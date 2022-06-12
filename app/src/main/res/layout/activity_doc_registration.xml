@@ -20,9 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="@string/tv_register_title_text"
-            android:textSize="@dimen/tv_20sp_textsize" />
+            android:textSize="@dimen/tv_20sp_textsize"
+            android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -38,9 +38,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_title"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
@@ -55,15 +55,15 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_firstname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -71,21 +71,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_title">
+
                 <EditText
                     android:id="@+id/et_register_firstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_lastname"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -100,14 +101,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_address"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -122,14 +123,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -144,14 +145,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_website"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -166,21 +167,81 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_register_specialization"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/til_register_specialization"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_register_website">
+
+                <EditText
+                    android:id="@+id/et_register_specialization"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="@dimen/et_16dp_padding"
+                    android:textSize="@dimen/et_16sp_textsize" />
+
+                <TextView
+                    android:id="@+id/tv_register_insurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/tv_register_insurance"
+                    android:textSize="@dimen/tv_16sp_textsize" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_svs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/tv_svs" />
+                <CheckBox
+                    android:id="@+id/checkBox_ögk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox_svs"
+                    android:layout_centerInParent="true"
+                    android:text="@string/tv_ögk" />
+                <CheckBox
+                    android:id="@+id/checkBox_bvaeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox_ögk"
+                    android:layout_centerInParent="true"
+                    android:text="@string/tv_bvaeb" />
+                <CheckBox
+                    android:id="@+id/checkBox_kva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox_bvaeb"
+                    android:layout_centerInParent="true"
+                    android:text="@string/tv_kva" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/et_login_email_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_register_website">
+                app:layout_constraintTop_toBottomOf="@id/til_register_specialization">
 
                 <EditText
                     android:id="@+id/et_register_email"
@@ -188,14 +249,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -210,14 +271,14 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_register_confirmpassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="16dp"
@@ -232,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:padding="@dimen/et_16dp_padding"
-                    android:textSize="@dimen/et_16sp_textsize"/>
+                    android:textSize="@dimen/et_16sp_textsize" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
@@ -244,7 +305,7 @@
                 android:text="@string/cb_register_termsandcondition_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_register_confirmpassword"/>
+                app:layout_constraintTop_toBottomOf="@id/til_register_confirmpassword" />
 
             <Button
                 android:id="@+id/btn_register_register"
@@ -274,7 +335,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_register_alreadyhaveanaccount_text"
-                    android:textSize="@dimen/tv_16sp_textsize"/>
+                    android:textSize="@dimen/tv_16sp_textsize" />
 
                 <TextView
                     android:id="@+id/tv_register_login"
@@ -282,14 +343,13 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/tv_5dp_padding"
                     android:text="@string/tv_register_login_text"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/tv_16sp_textsize"/>
+                    android:textSize="@dimen/tv_16sp_textsize"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
