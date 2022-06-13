@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_doc_registration.*
 
 class DocRegistrationActivity : BasicActivity() {
-    val result = StringBuilder()
+    var result = StringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -163,6 +163,9 @@ class DocRegistrationActivity : BasicActivity() {
             }  //showErrorSnackBar("All entered user details are valid.", false)
         }
 
+        if(!returnVal){
+            result.setLength(0)
+        }
         return returnVal
     }
 

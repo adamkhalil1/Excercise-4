@@ -46,7 +46,7 @@ class LoginActivity : BasicActivity() {
 
                         //If user information can be retrieved from CloudFireStore
                         // => call HomeActivity (see Function userLoggedInSuccess)
-                       // CloudFirestore().getUserDetails(this)
+                       CloudFirestore().getUserDetails(this)
                     } else {
                         showCustomSnackBar(task.exception!!.message.toString(), true)
                     }
