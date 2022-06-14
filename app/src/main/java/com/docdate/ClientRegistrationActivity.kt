@@ -116,7 +116,7 @@ class ClientRegistrationActivity : BasicActivity() {
                         Log.i("FIREBASE AUTHENTICATION", "A new user is created with Firebase-User-ID: ${firebaseUser.uid}")
                         showCustomSnackBar("A new user is created with Firebase-User-ID: ${firebaseUser.uid}", false)
 
-                        val user = User(firebaseUser.uid, firstname, lastname,email)
+                        val user = User(firebaseUser.uid, "client", "", firstname,lastname,"","","","","",email)
                         CloudFirestore().saveClientUserInfoOnCloudFirestore(this, user)
                     } else {
                         showCustomSnackBar(task.exception!!.message.toString(), true)
