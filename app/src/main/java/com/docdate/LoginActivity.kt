@@ -16,12 +16,12 @@ class LoginActivity : BasicActivity() {
 
         val tvRegister : TextView = findViewById(R.id.tv_login_register)
         tvRegister.setOnClickListener {
-            startActivity(Intent(this, DocRegistrationActivity::class.java))
+            startActivity(Intent(this, PopUpReg::class.java))
         }
 
         val tvForgotPassword: TextView = findViewById(R.id.tv_login_forgotpassword)
         tvForgotPassword.setOnClickListener {
-         //   startActivity(Intent(this, ForgotPasswordActivity::class.java))
+         //TODO  startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
         val btnLogin : Button = findViewById(R.id.btn_login_login)

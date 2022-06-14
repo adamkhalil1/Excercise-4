@@ -205,7 +205,7 @@ class DocRegistrationActivity : BasicActivity() {
                             "A new user is created with Firebase-User-ID: ${firebaseUser.uid}",
                             false
                         )
-                        val user = User(firebaseUser.uid, title, firstname,lastname,address,phone,website,specialisation,insurance,email)
+                        val user = User(firebaseUser.uid, "Dr", title, firstname,lastname,address,phone,website,specialisation,insurance,email)
                         CloudFirestore().saveUserInfoOnCloudFirestore(this, user)
 
 

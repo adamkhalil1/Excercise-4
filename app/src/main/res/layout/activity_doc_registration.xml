@@ -27,10 +27,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_register_activity">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_register_activity"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -206,6 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/tv_svs" />
+
                 <CheckBox
                     android:id="@+id/checkBox_ögk"
                     android:layout_width="match_parent"
@@ -213,13 +217,7 @@
                     android:layout_below="@id/checkBox_svs"
                     android:layout_centerInParent="true"
                     android:text="@string/tv_ögk" />
-                <CheckBox
-                    android:id="@+id/checkBox_bvaeb"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/checkBox_ögk"
-                    android:layout_centerInParent="true"
-                    android:text="@string/tv_bvaeb" />
+
                 <CheckBox
                     android:id="@+id/checkBox_kva"
                     android:layout_width="match_parent"
@@ -227,6 +225,14 @@
                     android:layout_below="@id/checkBox_bvaeb"
                     android:layout_centerInParent="true"
                     android:text="@string/tv_kva" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_bvaeb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/checkBox_ögk"
+                    android:layout_centerInParent="true"
+                    android:text="@string/tv_bvaeb" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -250,6 +256,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="@dimen/et_16dp_padding"
                     android:textSize="@dimen/et_16sp_textsize" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -312,23 +319,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:padding="@dimen/btn_8dp_padding"
                 android:text="@string/btn_register_register_text"
                 android:textSize="@dimen/btn_18sp_textsize"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cb_register_termsandcondition" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="1226dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_register_register">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/tv_register_alreadyhaveanaccount"

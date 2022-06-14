@@ -6,6 +6,7 @@ import android.os.Parcelable
 
 class User(
     val id: String? = "",
+    val profession: String? = "",
     val title: String? = "",
     val firstName: String? = "",
     val lastName: String? = "",
@@ -27,12 +28,13 @@ class User(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
+        parcel.writeString(profession)
         parcel.writeString(firstName)
         parcel.writeString(lastName)
         parcel.writeString(title)

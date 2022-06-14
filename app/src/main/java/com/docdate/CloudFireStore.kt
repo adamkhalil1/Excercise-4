@@ -1,5 +1,4 @@
 package com.docdate
-import android.app.Activity
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -10,6 +9,20 @@ class CloudFirestore {
 
     fun saveUserInfoOnCloudFirestore(registerActivity : DocRegistrationActivity, currentUser : User){
 
+        //Users is the name of the DB-collection/table
+        fireStoreInstance.collection(Constants.TABLENAME_USERS)
+            .document(currentUser.id.toString())
+            .set(currentUser, SetOptions.merge())
+            .addOnSuccessListener {
+                registerActivity.userRegistrationSuccess()
+            }
+            .addOnFailureListener { e->
+                Log.e(registerActivity.javaClass.simpleName, "Error while registering the current user.", e)
+            }
+    }
+
+    //TODO try to delte following dublicate code
+    fun saveClientUserInfoOnCloudFirestore(registerActivity : ClientRegistrationActivity, currentUser : User){
         //Users is the name of the DB-collection/table
         fireStoreInstance.collection(Constants.TABLENAME_USERS)
             .document(currentUser.id.toString())

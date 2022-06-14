@@ -14,6 +14,11 @@
     <string name="tv_login_donthaveanaccount_text">Don\'t have an account?</string>
     <string name="tv_login_register_text"><u>Register</u></string>
 
+    <!-- POPUP SCREEN -->
+    <string name="btn_client">Client</string>
+    <string name="btn_doc">Doctor</string>
+    <string name="tv_register_as">Register as :</string>
+
     <!-- REGISTER SCREEN -->
     <string name="tv_register_title_text">CREATE AN ACCOUNT</string>
     <string name="til_register_firstname_hint">First name</string>
@@ -103,4 +108,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_basic_ativity">BasicAtivity</string>
+    <string name="title_activity_client_registration">ClientRegistrationActivity</string>
 </resources>

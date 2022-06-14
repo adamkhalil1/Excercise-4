@@ -21,7 +21,11 @@
 
     <style name="Theme.DocDateApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.DocDateApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.DocDateApp.PopupOverlay">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 
 </resources>

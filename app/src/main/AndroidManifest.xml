@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.docdate">
+    package="com.docdate" >
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,15 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.DocDateApp" >
+        <activity
+            android:name=".PopUpReg"
+            android:exported="false"
+            android:theme="@style/Theme.DocDateApp.PopupOverlay" />
+        <activity
+            android:name=".ClientRegistrationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_client_registration"
+            android:theme="@style/Theme.DocDateApp.NoActionBar" />
         <activity
             android:name=".DocRegistrationActivity"
             android:exported="false"
