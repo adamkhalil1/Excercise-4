@@ -1,6 +1,6 @@
 package com.docdate
 
-
+import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -15,10 +15,12 @@ class User(
     val website: String? = "",
     val specialisation: String? = "",
     val insurance: String? = "",
-    val email: String? = ""
+    val email: String? = "",
+    val uri: String? = "",
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -44,6 +46,7 @@ class User(
         parcel.writeString(specialisation)
         parcel.writeString(insurance)
         parcel.writeString(email)
+        parcel.writeString(uri)
     }
 
     override fun describeContents(): Int {

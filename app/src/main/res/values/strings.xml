@@ -20,7 +20,9 @@
     <string name="btn_appointments">My Appointments</string>
     <string name="btn_new_date">New Date</string>
 
-
+    <!-- MAIN TAB SCREEN -->
+    <string name="docs">Doctors</string>
+    <string name="profile">Profile</string>
 
     <!-- POPUP SCREEN -->
     <string name="btn_client">Client</string>
@@ -30,6 +32,7 @@
     <!-- REGISTER SCREEN -->
     <string name="tv_register_title_text">CREATE AN ACCOUNT</string>
     <string name="til_register_firstname_hint">First name</string>
+    <string name="til_register_lastname_hint">Last name</string>
     <string name="til_register_confirmpassword_hint">Confirm Password</string>
     <string name="cb_register_termsandcondition_text">I Agree to the <u>Terms and Condition</u></string>
     <string name="btn_register_register_text">Register</string>
@@ -42,6 +45,8 @@
     <string name="til_register_phone">Phone</string>
     <string name="til_register_website">Website URL</string>
     <string name="til_register_specialization">Specialisation</string>
+    <string name="til_register_profession">Profession</string>
+    <string name="til_register_email">Email</string>
     <string name="tv_register_insurance">Health insurance companies</string>
     <string name="tv_svs">SVS</string>
     <string name="tv_ögk">ÖGK</string>

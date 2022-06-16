@@ -1,10 +1,9 @@
 package com.docdate
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
@@ -73,10 +72,10 @@ class LoginActivity : BasicActivity() {
         return returnVal
     }
 
-   /* fun userLoggedInSuccess(user : User){
+   fun userLoggedInSuccess(user : User){
         val intent = Intent(this, HomeActivity::class.java)
         //TODO: user_info can be added to constants
         intent.putExtra("user_info", user)
         startActivity(intent)
-    }*/
+    }
 }

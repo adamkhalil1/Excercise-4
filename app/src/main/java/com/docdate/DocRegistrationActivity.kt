@@ -1,14 +1,11 @@
 package com.docdate
+
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_doc_registration.*
 
 class DocRegistrationActivity : BasicActivity() {
     var result = StringBuilder()

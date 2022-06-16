@@ -3,6 +3,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import kotlinx.coroutines.awaitAll
 
 class CloudFirestore {
     private val fireStoreInstance = FirebaseFirestore.getInstance()
@@ -41,7 +42,7 @@ class CloudFirestore {
             .get()
             .addOnSuccessListener { document ->
                 val user: User = document.toObject(User::class.java)!!
-                //TODO loginActivity.userLoggedInSuccess(user)
+                loginActivity.userLoggedInSuccess(user)
             }
             .addOnFailureListener { e->
                 Log.e(loginActivity.javaClass.simpleName, "Error while reading the current user information.", e)
@@ -62,4 +63,22 @@ class CloudFirestore {
 
         return ""
     }
+
+    fun getDoctors(doctorsFragment: DoctorsFragment) {
+        fireStoreInstance.collection(Constants.TABLENAME_USERS)
+            .whereEqualTo("profession", "Dr")
+            .get()
+            .addOnSuccessListener { documents ->
+                val users: MutableList<User> = mutableListOf()
+                for (document in documents) {
+                    val user: User = document.toObject(User::class.java)
+                    users.add(user);
+                }
+                doctorsFragment.listDoctors(users)
+            }
+            .addOnFailureListener { e->
+                Log.e(doctorsFragment.javaClass.simpleName, "Error while reading the current user information.", e)
+            }
+    }
+
 }
