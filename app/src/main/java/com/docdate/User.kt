@@ -1,6 +1,6 @@
 package com.docdate
 
-
+import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -16,10 +16,12 @@ class User(
     val specialisation: String? = "",
     val insurance: String? = "",
     val email: String? = "",
-    val uri: String? = ""
+
+    val uri: String? = "",
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
