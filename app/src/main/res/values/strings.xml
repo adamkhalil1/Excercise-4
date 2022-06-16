@@ -9,7 +9,6 @@
     <string name="tv_login_title_text">Welcome!</string>
     <string name="et_login_email_hint">Email ID</string>
     <string name="et_login_password_hint">Password</string>
-    <string name="tv_login_forgotpassword_text"><u>Forgot Password?</u></string>
     <string name="btn_login_login_text">Login</string>
     <string name="tv_login_donthaveanaccount_text">Don\'t have an account?</string>
     <string name="tv_login_register_text"><u>Register</u></string>
