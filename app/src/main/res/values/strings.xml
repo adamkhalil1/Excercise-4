@@ -47,6 +47,7 @@
     <string name="tv_ögk">ÖGK</string>
     <string name="tv_bvaeb">BVAEB</string>
     <string name="tv_kva">KVA</string>
+    <string name="btn_upload">CHOOSE FILE</string>
 
     <!-- Error messages for register UI -->
     <string name="err_msg_enter_first_name">Please enter first name.</string>
@@ -119,4 +120,5 @@
     <string name="title_activity_client_registration">ClientRegistrationActivity</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upload_your_profile_image">Upload your profile image</string>
 </resources>

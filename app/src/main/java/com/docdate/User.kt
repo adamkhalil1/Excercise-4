@@ -15,7 +15,8 @@ class User(
     val website: String? = "",
     val specialisation: String? = "",
     val insurance: String? = "",
-    val email: String? = ""
+    val email: String? = "",
+    val uri: String? = ""
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -44,6 +45,7 @@ class User(
         parcel.writeString(specialisation)
         parcel.writeString(insurance)
         parcel.writeString(email)
+        parcel.writeString(uri)
     }
 
     override fun describeContents(): Int {

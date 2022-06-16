@@ -1,21 +1,46 @@
 package com.docdate
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+
 import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
+import android.webkit.MimeTypeMap
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.tasks.Tasks.await
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_doc_registration.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.*
 
 class DocRegistrationActivity : BasicActivity() {
     var result = StringBuilder()
+    private val PICK_IMAGE_REQUEST = 1
+    private var mProgressBar: ProgressBar? = null
+    private var mImageView: ImageView? = null
+    private var mImageUri: Uri? = null
+
+    private var mStorageRef: StorageReference? = null
+    private var mDatabaseRef: DatabaseReference? = null
+    private var mUploadTask: StorageTask<*>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doc_registration)
+        mProgressBar = findViewById(R.id.progress_bar);
+        mImageView = findViewById(R.id.image_view);
+
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Uploads")
+
+        val mButtonChooseImage: Button = findViewById(R.id.btn_upload)
+        mButtonChooseImage.setOnClickListener(View.OnClickListener { view ->
+            openFileChooser()
+        })
+
 
         val tvLogin: TextView = findViewById(R.id.tv_register_login)
         tvLogin.setOnClickListener {
@@ -26,7 +51,9 @@ class DocRegistrationActivity : BasicActivity() {
 
         val btnRegister: Button = findViewById(R.id.btn_register_register)
         btnRegister.setOnClickListener {
-            registerNewUser()
+            uploadFile()
+
+
         }
     }
 
@@ -87,7 +114,7 @@ class DocRegistrationActivity : BasicActivity() {
         val emailId = etEmailId.text.toString().trim { it <= ' ' }
         val password = etPassword.text.toString().trim { it <= ' ' }
         val confirmPassword = etConfirmPassword.text.toString().trim { it <= ' ' }
-        val insurance =  result.toString().trim{ it <= ' ' }
+        val insurance = result.toString().trim { it <= ' ' }
 
 
         val returnVal = when {
@@ -163,13 +190,13 @@ class DocRegistrationActivity : BasicActivity() {
             }  //showErrorSnackBar("All entered user details are valid.", false)
         }
 
-        if(!returnVal){
+        if (!returnVal) {
             result.setLength(0)
         }
         return returnVal
     }
 
-    private fun registerNewUser() {
+    private fun registerNewUser(stringUri: String?) {
         if (validateUserInformation()) {
             val title = (findViewById(R.id.et_title) as EditText).text.toString()
                 .trim { it <= ' ' }
@@ -183,9 +210,10 @@ class DocRegistrationActivity : BasicActivity() {
                 .trim { it <= ' ' }
             val website = (findViewById(R.id.et_register_website) as EditText).text.toString()
                 .trim { it <= ' ' }
-            val specialisation = (findViewById(R.id.et_register_specialization) as EditText).text.toString()
-                .trim { it <= ' ' }
-            val insurance = result.toString().trim{ it <= ' ' }
+            val specialisation =
+                (findViewById(R.id.et_register_specialization) as EditText).text.toString()
+                    .trim { it <= ' ' }
+            val insurance = result.toString().trim { it <= ' ' }
             val email: String = (findViewById(R.id.et_register_email) as EditText).text.toString()
                 .trim { it <= ' ' }
             val password: String =
@@ -205,7 +233,20 @@ class DocRegistrationActivity : BasicActivity() {
                             "A new user is created with Firebase-User-ID: ${firebaseUser.uid}",
                             false
                         )
-                        val user = User(firebaseUser.uid, "Dr", title, firstname,lastname,address,phone,website,specialisation,insurance,email)
+                        val user = User(
+                            firebaseUser.uid,
+                            "Dr",
+                            title,
+                            firstname,
+                            lastname,
+                            address,
+                            phone,
+                            website,
+                            specialisation,
+                            insurance,
+                            email,
+                            stringUri
+                        )
                         CloudFirestore().saveUserInfoOnCloudFirestore(this, user)
 
 
@@ -223,4 +264,85 @@ class DocRegistrationActivity : BasicActivity() {
         Toast.makeText(this, resources.getString(R.string.register_success), Toast.LENGTH_LONG)
             .show()
     }
+
+    private fun openFileChooser() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        showCustomSnackBar(
+            "openfilechoser started}",
+            false
+        )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
+            mImageUri = data.data
+            //Picasso.with(this).load(mImageUri).into(mImageView)
+            mImageView?.setImageURI(mImageUri);
+        }
+    }
+
+
+    private fun getFileExtension(uri: Uri): String? {
+        val cR = contentResolver
+        val mime = MimeTypeMap.getSingleton()
+        return mime.getExtensionFromMimeType(cR.getType(uri))
+    }
+
+    private fun uploadFile() {
+        if (mImageUri != null) {
+            val fileReference: StorageReference = mStorageRef!!.child(
+                System.currentTimeMillis()
+                    .toString() + "." + getFileExtension(mImageUri!!)
+            )
+            mUploadTask = fileReference.putFile(mImageUri!!) //TODO SAfe uri in user db
+                .addOnSuccessListener { taskSnapshot ->
+                    var handler = Handler()
+                    handler.postDelayed(Runnable { mProgressBar!!.progress = 0 }, 500)
+                    Toast.makeText(this, "Upload successful", Toast.LENGTH_LONG).show()
+
+
+
+
+
+
+
+                    var uri = taskSnapshot.uploadSessionUri
+                    var uri2 = taskSnapshot.metadata.toString()
+                    var uri3 = mUploadTask!!.result
+                    println("----------------------------------------------------------------------done" + mUploadTask.toString() + "-------------" + uri.toString() + "uri normal = " + uri2.toString() + " MEtadatra" +uri3);
+
+                    var stringUri = uri.toString();
+                    var upload = Upload(
+                        "hallo",
+                        uri,
+                        //TODO check that again
+                    )
+                    var uploadId: String = mDatabaseRef!!.push().getKey()!!;
+                    mDatabaseRef!!.child(uploadId).setValue(upload)
+                    registerNewUser(stringUri)
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(
+                        this,
+                        e.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .addOnProgressListener(object : OnProgressListener<UploadTask.TaskSnapshot?> {
+                    override fun onProgress(taskSnapshot: UploadTask.TaskSnapshot) {
+                        val progress =
+                            100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
+                        mProgressBar!!.progress = progress.toInt()
+                    }
+                })
+        } else {
+            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 }

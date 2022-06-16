@@ -30,10 +30,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_register_activity"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -233,6 +233,37 @@
                     android:layout_below="@id/checkBox_ögk"
                     android:layout_centerInParent="true"
                     android:text="@string/tv_bvaeb" />
+
+                <TextView
+                    android:id="@+id/tv_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/upload_your_profile_image"
+                    android:textSize="@dimen/tv_16sp_textsize" />
+
+                <Button
+                    android:id="@+id/btn_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_upload" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/button_upload"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="16dp" />
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="69dp"
+                    android:layout_height="68dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/logo" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -279,6 +310,7 @@
                     android:inputType="textPassword"
                     android:padding="@dimen/et_16dp_padding"
                     android:textSize="@dimen/et_16sp_textsize" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -330,13 +362,14 @@
                 app:layout_constraintTop_toBottomOf="@id/cb_register_termsandcondition" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1226dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/btn_register_register">
 
                 <TextView
                     android:id="@+id/tv_register_alreadyhaveanaccount"

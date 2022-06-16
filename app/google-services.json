@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "156378678902",
+    "firebase_url": "https://docdateapp-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "docdateapp",
     "storage_bucket": "docdateapp.appspot.com"
   },
