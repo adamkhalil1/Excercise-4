@@ -4,15 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
+    <androidx.fragment.app.FragmentContainerView
+        android:id='@+id/fragmentContainerView'
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/blueOfLogo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-42dp" />
+
+    <Button
+        android:id="@+id/btnFm1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="28dp"
+        android:text="@string/btn_docslist"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnFm2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="@string/btn_appointments"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView"
+        app:layout_constraintStart_toEndOf="@+id/btnFm1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
