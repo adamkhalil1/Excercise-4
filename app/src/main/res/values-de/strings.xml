@@ -59,4 +59,9 @@
     <string name="next">Weiter</string>
     <string name="previous">Zurück</string>
     <string name="upload_your_profile_image">Proflbild hochladen</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -37,6 +37,7 @@
     <string name="btn_register_register_text">Register</string>
     <string name="tv_register_alreadyhaveanaccount_text">Already have an account?</string>
     <string name="tv_register_login_text"><u>Login</u></string>
+    <string name="tv_login_forgotpassword_text"><u>Forgot Password?</u></string>
 
     <!-- REGISTER SCREEN DOCS -->
     <string name="til_register_title_hint">Title</string>
