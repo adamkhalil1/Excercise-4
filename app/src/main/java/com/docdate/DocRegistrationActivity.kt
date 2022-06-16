@@ -195,7 +195,7 @@ class DocRegistrationActivity : BasicActivity() {
         return returnVal
     }
 
-    private fun registerNewUser(stringUri: String?) {
+    private fun registerNewUser(stringUri: Uri) {
         if (validateUserInformation()) {
             val title = (findViewById(R.id.et_title) as EditText).text.toString()
                 .trim { it <= ' ' }
@@ -244,7 +244,7 @@ class DocRegistrationActivity : BasicActivity() {
                             specialisation,
                             insurance,
                             email,
-                            stringUri
+                            stringUri.toString()
                         )
                         CloudFirestore().saveUserInfoOnCloudFirestore(this, user)
 
@@ -303,16 +303,10 @@ class DocRegistrationActivity : BasicActivity() {
                     handler.postDelayed(Runnable { mProgressBar!!.progress = 0 }, 500)
                     Toast.makeText(this, "Upload successful", Toast.LENGTH_LONG).show()
 
-
-
-
-
-
-
                     var uri = taskSnapshot.uploadSessionUri
                     var uri2 = taskSnapshot.metadata.toString()
                     var uri3 = mUploadTask!!.result
-                    println("----------------------------------------------------------------------done" + mUploadTask.toString() + "-------------" + uri.toString() + "uri normal = " + uri2.toString() + " MEtadatra" +uri3);
+//                    println("----------------------------------------------------------------------done" + mUploadTask.toString() + "-------------" + uri.toString() + "uri normal = " + uri2.toString() + " MEtadatra" +uri3);
 
                     var stringUri = uri.toString();
                     var upload = Upload(
@@ -322,7 +316,11 @@ class DocRegistrationActivity : BasicActivity() {
                     )
                     var uploadId: String = mDatabaseRef!!.push().getKey()!!;
                     mDatabaseRef!!.child(uploadId).setValue(upload)
-                    registerNewUser(stringUri)
+                    fileReference.downloadUrl.addOnSuccessListener { Uri ->
+                        registerNewUser(Uri)
+                    }.addOnFailureListener {
+                        // Handle any errors
+                    }
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(
@@ -338,10 +336,10 @@ class DocRegistrationActivity : BasicActivity() {
                         mProgressBar!!.progress = progress.toInt()
                     }
                 })
+
         } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
         }
     }
-
 
 }
