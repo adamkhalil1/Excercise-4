@@ -19,7 +19,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             if (emailId.isEmpty()) {
                 Toast.makeText(
                     this,
-                    "Please enter Password",
+                    "Please enter Email",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
@@ -28,7 +28,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             Toast.makeText(
                                 this,
-                                "Succesfully reseted",
+                                "Succesfully submited",
                                 Toast.LENGTH_SHORT
                             ).show()
                             finish()

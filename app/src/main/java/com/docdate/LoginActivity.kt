@@ -20,7 +20,7 @@ class LoginActivity : BasicActivity() {
 
         val tvForgotPassword: TextView = findViewById(R.id.tv_login_forgotpassword)
         tvForgotPassword.setOnClickListener {
-         //TODO  startActivity(Intent(this, ForgotPasswordActivity::class.java))
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
         val btnLogin : Button = findViewById(R.id.btn_login_login)
