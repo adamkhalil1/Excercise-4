@@ -136,5 +136,19 @@
             android:textSize="@dimen/tv_16sp_textsize"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_login_forgotpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/tv_5dp_padding"
+        android:textSize="@dimen/tv_16sp_textsize"
+        android:text="@string/tv_login_forgotpassword_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_login_registernewaccount"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
