@@ -312,8 +312,11 @@ class DocRegistrationActivity : BasicActivity() {
                     var uri = taskSnapshot.uploadSessionUri
                     var uri2 = taskSnapshot.metadata.toString()
                     var uri3 = mUploadTask!!.result
-                    println("----------------------------------------------------------------------done" + mUploadTask.toString() + "-------------" + uri.toString() + "uri normal = " + uri2.toString() + " MEtadatra" +uri3);
+                    val url4 = taskSnapshot
+                    Picasso.get().load("https://i.imgur.com/DvpvklR.png%22).into(imageView)");
 
+
+                    println("----------------------------------------------------------------------done" + mUploadTask.toString() + "-------------" + uri.toString() + "uri normal = " + uri2.toString() + " MEtadatra" +uri3);
                     var stringUri = uri.toString();
                     var upload = Upload(
                         "hallo",
