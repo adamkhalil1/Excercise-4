@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.docdate.R
 import com.docdate.User
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class DoctorItemAdapter(
     private val doctors: List<User>
@@ -38,7 +40,12 @@ class DoctorItemAdapter(
         holder.tvWebsite.text = item.website
         holder.tvPhone.text = item.phone
         holder.tvSpecialization.text = item.specialisation
-        holder.imageView.setImageURI(Uri.parse(item.uri));
+        if ( item.uri != "" ) {
+            Picasso.with(holder.imageView.context)
+                .load(item.uri)
+                .into(holder.imageView)
+        }
+
     }
 
     override fun getItemCount() = doctors.size
