@@ -61,13 +61,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-release.apk
-          path: app/docdateapp/app/release/app-release.apk
+          path: app/release/app-release.apk
 
       - name: Final Check with Jar Signer
         run: |
           ls -la
           echo "$PWD"
-          jarsigner -verify -verbose -certs app/docdateapp/app/release/app-release.apk
+          jarsigner -verify -verbose -certs app/release/app-release.apk
 
       - name: Signing check
         run: |
