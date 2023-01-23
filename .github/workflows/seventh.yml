@@ -1,17 +1,19 @@
 name: Android Build and Deployment Pipeline
 
-on: [push]
-  branches:
-    - 'release_*'
-    - 'master'
-workflow_dispatch:
-  inputs:
-    app_id:
-      description: 'The application Id of the current build'
-       required: true
-    branch:
-      description: 'The branch from which we have to build'
-      required: true
+on:
+  push:
+    branches:
+      - 'release_*'
+      - 'main'
+
+  workflow_dispatch:
+    inputs:
+      app_id:
+        description: 'The application Id of the current build'
+        required: true
+      branch:
+        description: 'The branch from which we have to build'
+        required: true
 
 jobs:
   build:
@@ -23,3 +25,34 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
 
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Generate app bundle
+        run: ./gradlew app:bundleRelease --stacktrace
+
+      - name: Sign app bundle
+        run: |
+          jarsigner -keystore app/*.jks \
+          -storepass ${{ secrets.KEY_STORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} \
+          app/build/outputs/bundle/release/app-release.aab ${{ secrets.ALIAS }}
+
+  #   STEP 2 : Upload the Artifact
