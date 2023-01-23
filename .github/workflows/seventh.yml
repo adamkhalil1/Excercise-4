@@ -66,6 +66,7 @@ jobs:
       - name: Final Check with Jar Signer
         run: |
           echo "$PWD"
+          ls -la
           jarsigner -verify -verbose -certs app/docdateapp/app/release/app-release.apk
 
       - name: Signing check
