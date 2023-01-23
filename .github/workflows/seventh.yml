@@ -71,12 +71,7 @@ jobs:
 
       - name: Signing check
         run: |
-          mkdir -p Application/keystore
-          echo "${{secrets.ANDROID_KEYSTORE}}" > keystore.asc
-          gpg -d --passphrase "${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" --batch android-keystore.asc > Application/keystore/keystore.jks
-          echo "storePassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-          echo "keyPassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs Application/keystore/keystore.jks | grep "Adam")
+          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs Application/keystore/keystore.jks | grep "adam Khalil")
           if [ "$JAR_SIGNER_RESULT" == "" ]; then
             exit 1
           fi
