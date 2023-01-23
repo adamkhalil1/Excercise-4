@@ -61,11 +61,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-release.apk
-          path: app\docdateapp\app\release
+          path: app/docdateapp/app/release/app-release.apk
 
       - name: Final Check with Jar Signer
         run: |
-          jarsigner -verify -verbose -certs app\docdateapp\app\release\
+          jarsigner -verify -verbose -certs app/docdateapp/app/release/app-release.apk
 
       - name: Signing check
         run: |
@@ -74,7 +74,7 @@ jobs:
           gpg -d --passphrase "${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" --batch android-keystore.asc > Application/keystore/keystore.jks
           echo "storePassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
           echo "keyPassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs app\docdateapp\app\release\app-release.apk | grep "Your Name")
+          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs app/keystore/keystore.jks | grep "Your Name")
           if [ "$JAR_SIGNER_RESULT" == "" ]; then
             exit 1
           fi
