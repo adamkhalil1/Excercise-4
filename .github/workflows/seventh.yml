@@ -78,7 +78,7 @@ jobs:
       - name: Success Email
         uses: cinotify/github-action@v1.1.0
         with:
-          to: 'theresa.urbanek@edu.fh-joanneum.at'
+          to: 'adam.khalil@edu.fh-joanneum.at'
           subject: 'Successfull build for Docdateapp'
           body: 'Congrats!! All actions have passed'
 
