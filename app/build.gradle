@@ -10,7 +10,7 @@ apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdk 8
+    compileSdk 32
 
     signingConfigs {
         release {
