@@ -37,7 +37,6 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-        android.nonTransitiveRClass='true'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,7 +53,7 @@ android {
 }
 
 task wrapper(type: Wrapper){
-    gradleVersion = '7.6'
+    gradleVersion = '7.2'
 }
 
 task prepareKotlinBuildScriptModel {
