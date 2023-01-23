@@ -75,6 +75,12 @@ jobs:
             exit 1
           fi
 
+      - name: Success Email
+        uses: cinotify/github-action@v1.1.0
+        with:
+          to: 'adam.khalil@edu.fh-joanneum.at', 'theresa.urbanek@edu.fh-joanneum.at'
+          subject: 'building teeeeest'
+          body: 'This is a notification from GitHub actions.'
 
 
 
