@@ -79,8 +79,8 @@ jobs:
         uses: cinotify/github-action@v1.1.0
         with:
           to: 'theresa.urbanek@edu.fh-joanneum.at'
-          subject: 'building teeeeest'
-          body: 'This is a notification from GitHub actions.'
+          subject: 'Successfull build for Docdateapp'
+          body: 'Congrats!! All actions have passed'
 
 
 
