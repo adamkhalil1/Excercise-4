@@ -37,7 +37,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        android.nonTransitiveRClass='false'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
