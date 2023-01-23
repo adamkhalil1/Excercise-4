@@ -34,9 +34,9 @@ class ProfileFragment(val user: User) : Fragment() {
         phone_text.text = user.phone
         specialisation_text.text = user.specialisation
 
-        Picasso.with(context)
+      /*  Picasso.with(context)
                 .load(user.uri)
-                .into(img)
+                .into(img)*/
 
         logout_btn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
