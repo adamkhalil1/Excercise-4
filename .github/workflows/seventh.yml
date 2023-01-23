@@ -71,7 +71,8 @@ jobs:
 
       - name: Signing check
         run: |
-          JARSIGNER_RESULT=$(jarsigner -verify -certs app/release/app-release.apk | grep "adam")
+          JARSIGNER_RESULT=$(jarsigner -verify -certs app/release/app-release.apk | grep "CN=adam")
+          echo "$JAR_SIGNER_RESULT"
           if [ "$JAR_SIGNER_RESULT" == "" ]; then
             exit 1
           fi
