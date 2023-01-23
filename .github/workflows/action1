@@ -1,0 +1,5 @@
+- name: Publish APK
+  uses: actions/upload-artifact@v3
+  with:
+    name: Application-release.apk
+    path: Application/build/outputs/apk/release/Application-release.apk
