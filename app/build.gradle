@@ -1,4 +1,7 @@
-
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
@@ -50,7 +53,7 @@ android {
 }
 
 task wrapper(type: Wrapper){
-    gradleVersion = '7.2'
+    gradleVersion = '7.4'
 }
 
 task prepareKotlinBuildScriptModel {
