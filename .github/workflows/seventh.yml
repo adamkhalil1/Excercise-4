@@ -74,7 +74,7 @@ jobs:
           gpg -d --passphrase "${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" --batch android-keystore.asc > Application/keystore/keystore.jks
           echo "storePassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
           echo "keyPassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs app/keystore/keystore.jks | grep "Your Name")
+          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs Application/keystore/keystore.jks | grep "Adam")
           if [ "$JAR_SIGNER_RESULT" == "" ]; then
             exit 1
           fi
