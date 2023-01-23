@@ -67,7 +67,7 @@ jobs:
         run: |
           jarsigner -verify -verbose -certs Application/build/outputs/apk/release/Application-release.apk
 
-      - name: Prepare Keystore and properties
+      - name: Signing check
         run: |
           mkdir -p Application/keystore
           echo "${{secrets.ANDROID_KEYSTORE}}" > keystore.asc
