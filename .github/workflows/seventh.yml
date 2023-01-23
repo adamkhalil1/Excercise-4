@@ -71,7 +71,7 @@ jobs:
 
       - name: Signing check
         run: |
-          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs Application/keystore/keystore.jks | grep "adam Khalil")
+          JARSIGNER_RESULT=$(jarsigner -verify -verbose -certs app/release/app-release.apk | grep "adam Khalil")
           if [ "$JAR_SIGNER_RESULT" == "" ]; then
             exit 1
           fi
