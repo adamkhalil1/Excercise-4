@@ -65,7 +65,7 @@ jobs:
 
       - name: Final Check with Jar Signer
         run: |
-          jarsigner -verify -verbose -certs app\docdateapp\app\release\app-release.apk
+          jarsigner -verify -verbose -certs app\docdateapp\app\release\
 
       - name: Signing check
         run: |
