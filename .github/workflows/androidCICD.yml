@@ -56,7 +56,14 @@ jobs:
           gpg -d --passphrase "${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" --batch android-keystore.asc > Application/keystore/keystore.jks
           echo "storePassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
           echo "keyPassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-        
+
+        ##"Alternative:
+          ##" - name: Sign app bundle
+          ##" run: |
+          ##"   jarsigner -keystore app/*.jks \
+          ##"   -storepass ${{ secrets.KEY_STORE_PASSWORD }} -keypass ${{ secrets.KEY_PASSWORD }} \
+          ##"   app/build/outputs/bundle/release/app-release.aab ${{ secrets.ALIAS }}
+
       - name: Publish APK
         uses: actions/upload-artifact@v3
         with:
