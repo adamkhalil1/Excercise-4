@@ -46,7 +46,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Generate app apk
+      - name: Generate app Apk
         run: ./gradlew assembleRelease --stacktrace
 
       - name: Prepare Keystore and properties
@@ -56,7 +56,7 @@ jobs:
           gpg -d --passphrase "${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" --batch android-keystore.asc > Application/keystore/keystore.jks
           echo "storePassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
           echo "keyPassword=${{secrets.ANDROID_KEYSTORE_PASSPHRASE}}" >> gradle.properties
-
+        
       - name: Publish APK
         uses: actions/upload-artifact@v3
         with:
@@ -81,6 +81,3 @@ jobs:
           to: 'adam.khalil@edu.fh-joanneum.at'
           subject: 'Successfull build for Docdateapp'
           body: 'Congrats!! All actions have passed'
-
-
-
